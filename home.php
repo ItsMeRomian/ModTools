@@ -5,25 +5,24 @@ $user = new user;
 	<div class="row">
 		<div class="col">
 		<br>
+			<div class="alert alert-danger fade show" role="alert">
+				<?php 
+				$sollies = $conn->query("SELECT answered FROM staffapplication WHERE answered = '0'");
+				$sollies = $sollies->num_rows;
+				$server = runarray("SELECT * FROM server_status"); if ($server['users_online'] == 1) {?>
+				Momenteel is er <b>1 Dyna online</b>,
+				<?php } else { ?>
+				Momenteel zijn er <b><?=$server['users_online']?> Dyna's</b> online,
+				<?php } ?>
+				 zijn er <b><?=$server['loaded_rooms']?> kamers</b> geladen en <b><?=$sollies?> onbeantwoordde sollies</b>.
+			</div>
 			<div class="alert alert-info fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h5>Welkom <?=$_SESSION['username']?> in ModTools. </h5>
-				Gebruik de Admin Panel zoals het hoort, hou je aan de regels en afspraken.	<br>
+				<h5>Welkom <?=$_SESSION['username']?> in ModTools. </h5>	<br>
 				Alles wat jij hier doet of veranderd kan worden teruggevonden. bugs en errors graag doorgeven zodat Marvin of Romian het zsm kan veranderen.<br>
 				Je bent ingelogd met account, <b><?=$_SESSION['username']?></b>, ip <b><?=$_SERVER['HTTP_X_FORWARDED_FOR']?></b>, en je hebt rank <b><?=$_SESSION['rank']?></b> (dat is <b><?=$_SESSION['rankname']?></b>)
-				<br><br>
-				Shit todo
-				<ul>
-					<li>Automatische login als je al op hotel bent ingelogd</li>
-					<li>[fixed] Fix user search met naam</li>
-					<li>Fix classes</li>
-					<li>Fix style</li>
-					<li>[fixed] Fix links overal</li>
-					<li>Fix nieuws</li>
-					<li>Intergration met live hotel? webhooks?</li>
-                </ul>
             </div>
 		</div>
 	</div>

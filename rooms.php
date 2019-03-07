@@ -67,7 +67,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 		<h2>"<?=$room->get('caption')?>"</h2>
 		<hr>
 		Gemaakt door <a href="users.php?id=<?=$user->getspecific('username', $room->get('owner'))?>"><?=$user->getspecific('username', $room->get('owner'))?></a><br>
-		<img style="width: 120px;" src="https://hotel.dyna.host/swf/c_images/newroom/<?=$room->get('model_name')?>.png">
+		<img style="width: 120px;" src="<?=$hotel["base"]?>/swf/c_images/newroom/<?=$room->get('model_name')?>.png">
 	</div>
 	<div class="col">
 		<table class="table table-sm">
@@ -115,6 +115,10 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 				<td><?=date("d/m/Y H:i:s", $chatlogrow['timestamp'])?></td>
 				<td><?=$chatlogrow['message']?></td> 
 			</tr>
+		<?php } if (runassoc("SELECT * FROM chatlogs WHERE room_id = ".$room->get('id')." ORDER BY timestamp DESC LIMIT 50") == 0) { ?>
+		<tr>
+			<td>no chat!</td>
+		</tr>
 		<?php } ?>
 		</table>
 </div>

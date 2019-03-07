@@ -1,11 +1,11 @@
-<?php //include_once("include.php"); ?>
+<?php include_once("modtoolsconfig.php"); ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>ModTools - Login</title>
 <link rel="stylesheet" href="mods.css">
 
   <body class="text-center">
     <form class="form-signin" action="login.php" method="POST">
-      <img class="" src="https://hotel.dyna.host/templates/DynaHotel/images/logo2.webp" alt="" ><br>
+      <img class="" src="<?=$hotel['theme']?>/images/logo2.webp" alt="" ><br>
 	  <span class="mb-4"><b>MODTOOLS</b></span>
       <label for="inputEmail" class="sr-only"></label>
       <input type="username" id="username" name="username" class="form-control" placeholder="Login met je dynahotel account"  autofocus>

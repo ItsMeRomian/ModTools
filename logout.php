@@ -1,4 +1,5 @@
 <?php
+include_once('modtoolsconfig.php');
 session_start();
 session_destroy();
 ?>
@@ -7,9 +8,9 @@ session_destroy();
 <title>Bye bye</title>
   <body class="text-center">
     <form style="margin-top: 200px;"class="form-signin" action="login.php" method="POST">
-      <img class="" src="https://hotel.dyna.host/templates/martin/styling/images/logo.gif" alt="" ><br>
+      <img class="" src="<?=$hotel['base']?>/templates/martin/styling/images/logo.gif" alt="" ><br>
 	  <span class="mb-4"><b>MODTOOLS</b></span>
       <br>Je bent uitgelogd.<br>
-	  <a href="https://hotel.dyna.host/me">me</a> | <a href="https://hotel.dyna.host/client">client</a> | <a href="/">login</a>
+	  <a href="<?=$hotel['base']?>/me">me</a> | <a href="<?=$hotel['base']?>/client">client</a> | <a href="/">login</a>
     </form>
   </body>

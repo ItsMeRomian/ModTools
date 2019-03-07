@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "user", "mijnkreft", "2018");
+include_once("modtoolsconfig.php");
 $id = $_GET['id'];
 $name = $_GET['name'];
 $setprivate = $_GET['setprivate'];

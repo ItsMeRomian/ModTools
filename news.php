@@ -20,7 +20,7 @@
 		$newsresult = $conn->query($news);
 		while ($newsrow = $newsresult->fetch_assoc()) { ?>
 			<tr>
-				<td><a href="https://mods.dyna.host/news.php?title=<?=$newsrow['title']?>&image=<?=$newsrow['image']?>&author=<?=$newsrow['author']?>&date=<?=$newsrow['date']?>&short=<?=$newsrow['shortstory']?>&long=<?=$newsrow['longstory']?>">EDIT</a>
+				<td><a href="<?=$modtools['base']?>/news.php?title=<?=$newsrow['title']?>&image=<?=$newsrow['image']?>&author=<?=$newsrow['author']?>&date=<?=$newsrow['date']?>&short=<?=$newsrow['shortstory']?>&long=<?=$newsrow['longstory']?>">EDIT</a>
 				<td><?=$newsrow['id']?></td>
 				<td><?=$newsrow['title']?></td>
 				<td><a href="<?=$newsrow['image']?>">LINK</a></td>
@@ -41,7 +41,7 @@
 			<table>
 				<input hidden name="id"value="<?=$_GET['id']?>">
 				<tr><td style=" width: 100px;">TITEL</td><td width="600px;"><input value="<?=$_GET['title']?>"name="title"style="width: 100%;" type="text"></td></tr>
-				<tr><td>IMAGE</td><td><input value="<?=$_GET['image']?>"name="image"style="width: 100%;" placeholder="DIRECTE LINK NAAR EEN PNG" type="text"></td><td><a target="_blank"href="https://hotel.dyna.host/swf/c_images/web_promos/">directory met fotos</a></tr>
+				<tr><td>IMAGE</td><td><input value="<?=$_GET['image']?>"name="image"style="width: 100%;" placeholder="DIRECTE LINK NAAR EEN PNG" type="text"></td><td><a target="_blank"href="<?=$hotel['base']?>/swf/c_images/web_promos/">directory met fotos</a></tr>
 				<tr><td>AUTHOR</td><td><input value="<?=$_SESSION['username']?>" disabled name="author"style="width: 100%;"type="text"></td></tr>
 				<tr><td>DATUM</td><td><input value="<?=$_GET['date']?>"name="date"style="width: 100%;" placeholder="UNIX TIMESTAMP!" type="text"></td></tr>
 				<tr><td>SHORT</td><td><textarea name="short"style="width: 100%;" rows="5"placeholder="2/3 ZINNEN"><?=$_GET['short']?></textarea></td></tr>
@@ -52,7 +52,7 @@
 	</div>
 	<div class="col">
 		<h5>VERWIJDER NIEuWS</h5>
-		<form action="newsdelete.php" method="GET">
+		<form action="query.php?what=deletenews" method="GET">
 			<input name="id"type="number">
 			<button type="submit">verwijder :(</button>
 		</form>

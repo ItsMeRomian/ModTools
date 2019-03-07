@@ -33,7 +33,7 @@ $room = new room;
 	<div class="col-2">
 		<h2>"<?=$guild->get('name')?>"</h2>
 		gemaakt door <a href="users.php?id=<?=$guild->get('owner_id');?>"><?=$user->getspecific('username', $guild->get('owner_id'));?></a><br>
-		<img style="width: 110px;" src="https://hotel.dyna.host/swf/guildbadges/generated/<?=$guild->get('badge')?>.png">
+		<img style="width: 110px;" src="<?=$hotel['base']?>/swf/guildbadges/generated/<?=$guild->get('badge')?>.png">
 	</div>
 	<div class="col">
 		<h5>INFO</h5>

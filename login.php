@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "user", "mijnkreft", "2018");
+include_once('modtoolsconfig.php');
 $username = $_POST["username"];
 $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
