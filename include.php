@@ -66,7 +66,7 @@ function show(ye) {
 
 </head>
 
-<body style="background-color: #e8e8e8; ">
+<body style="">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" >
   <a class="navbar-brand" href="home.php"><img style="width: 100px;" src="<?=$hotel['theme']?>/images/logo2.webp"> MODTOOLS</a>
@@ -80,6 +80,7 @@ function show(ye) {
       <a class="nav-item nav-link" href="rooms.php">Kamers</a>
       <a class="nav-item nav-link " href="guilds.php">Guilds</a>
 	  <a class="nav-item nav-link " href="news.php">Niewsberichten</a>
+	  <a class="nav-item nav-link " href="sollies.php">Sollies</a>
     </div>
 	<div class="navbar-nav ml-auto" style="color: white;">
 		<a class="nav-item nav-link btn btn-success" style="color: white; margin-right: 5px;"target="_BLANK"href="<?-$hotel['base']?>/client">CLIENT (new tab) »</a>

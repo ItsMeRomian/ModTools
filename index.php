@@ -10,9 +10,9 @@
       <label for="inputEmail" class="sr-only"></label>
       <input type="username" id="username" name="username" class="form-control" placeholder="Login met je dynahotel account"  autofocus>
       <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="password" id="password" class="form-control" placeholder="pass" >
+      <input type="password" name="password" id="password" class="form-control" placeholder="Je Dyna wachtwoord" >
 
       <button class="btn btn-lg btn-primary btn-block" type="submit">naar devtools »</button>
-      <p class="mt-5 mb-3 text-muted">&copy; DYNA 2018</p>
+      <p class="mt-5 mb-3 text-muted">&copy; <?=$hotel['name']?> 2018</p>
     </form>
   </body>

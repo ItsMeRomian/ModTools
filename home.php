@@ -7,8 +7,10 @@ $user = new user;
 		<br>
 			<div class="alert alert-danger fade show" role="alert">
 				<?php 
-				$sollies = $conn->query("SELECT answered FROM staffapplication WHERE answered = '0'");
-				$sollies = $sollies->num_rows;
+				if ($conn->query("SELECT state FROM staffapplication WHERE state = 'pending'")) {
+					$sollies = $conn->query("SELECT state FROM staffapplication WHERE state = 'pending'");
+					$sollies = $sollies->num_rows;
+				} else { $sollies = 0; }
 				$server = runarray("SELECT * FROM server_status"); if ($server['users_online'] == 1) {?>
 				Momenteel is er <b>1 <?=$hotel['users']?> online</b>,
 				<?php } else { ?>
