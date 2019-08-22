@@ -10,18 +10,18 @@ $user = new user;
 				$sollies = $conn->query("SELECT answered FROM staffapplication WHERE answered = '0'");
 				$sollies = $sollies->num_rows;
 				$server = runarray("SELECT * FROM server_status"); if ($server['users_online'] == 1) {?>
-				Momenteel is er <b>1 Dyna online</b>,
+				Momenteel is er <b>1 <?=$hotel['users']?> online</b>,
 				<?php } else { ?>
-				Momenteel zijn er <b><?=$server['users_online']?> Dyna's</b> online,
+				Momenteel zijn er <b><?=$server['users_online']?> <?=$hotel['users']?>'s</b> online,
 				<?php } ?>
-				 zijn er <b><?=$server['loaded_rooms']?> kamers</b> geladen en <b><?=$sollies?> onbeantwoordde sollies</b>.
+				 zijn er <b><?=$server['loaded_rooms']?> kamers</b> geladen en <b><a href="sollies"><?=$sollies?> onbeantwoordde sollies</a></b>.
 			</div>
 			<div class="alert alert-info fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h5>Welkom <?=$_SESSION['username']?> in ModTools. </h5>	<br>
-				Alles wat jij hier doet of veranderd kan worden teruggevonden. bugs en errors graag doorgeven zodat Marvin of Romian het zsm kan veranderen.<br>
+				<?=$modtools["welcome"]?><br>
 				Je bent ingelogd met account, <b><?=$_SESSION['username']?></b>, ip <b><?=$_SERVER['HTTP_X_FORWARDED_FOR']?></b>, en je hebt rank <b><?=$_SESSION['rank']?></b> (dat is <b><?=$_SESSION['rankname']?></b>)
             </div>
 		</div>

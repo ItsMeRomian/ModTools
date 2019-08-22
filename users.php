@@ -216,5 +216,5 @@ $user->start();
 	</div>
 </div>
 </div>
-&copy; DynaHotel 2018 Made with &hearts; by <a href="https://dynafools.com">ItsMeRomian</a>
+
 <br><br>
