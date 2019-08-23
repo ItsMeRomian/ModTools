@@ -19,6 +19,7 @@ if (isset($_GET['id'])) {
 					<td><b>Voor</b></td>
 					<td><b>Hours</b></td>
 					<td><b>Kent</b></td>
+					<td><b>Waarom</b></td>
 					<td><b>Gesolisiteerd op</b></td>
 					<td><b>Beantwoord</b></td>
 					<td><b></b></td>
@@ -32,6 +33,7 @@ if (isset($_GET['id'])) {
 					<td><?=$row['function']?></td>
 					<td><?=$row['online']?></td>
 					<td><a href="users.php?name=<?=$row['whoyouknow']?>"><?=$row['whoyouknow']?></a></td>
+					<td><?=$row['why']?></td>
 					<td><?=date("d/m/Y H:i",$row['date'])?></td>
 					<td><?php if ($row['state'] == "pending") { ?><a href='#' onclick="show('<?=$row['id']?>')">Answer now</a> <?php } else { echo "beantwoord door <a href=users.php?name=" . $row['answered_by'] . ">" . $row['answered_by'] . "</a>"; }?></td>
 					<div style="display: none;" class="col" id=<?=$row['id']?>>
