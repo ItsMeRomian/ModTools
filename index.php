@@ -12,7 +12,7 @@
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="password" id="password" class="form-control" placeholder="Je Dyna wachtwoord" >
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">naar devtools »</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">DevTools »</button>
       <p class="mt-5 mb-3 text-muted">&copy; <?=$hotel['name']?> 2018</p>
     </form>
   </body>

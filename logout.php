@@ -10,7 +10,7 @@ session_destroy();
     <form style="margin-top: 200px;"class="form-signin" action="login.php" method="POST">
       <img class="" src="<?=$hotel['base']?>/templates/martin/styling/images/logo.gif" alt="" ><br>
 	  <span class="mb-4"><b>MODTOOLS</b></span>
-      <br>Je bent uitgelogd.<br>
+      <br>You have been logged out.<br>
 	  <a href="<?=$hotel['base']?>/me">me</a> | <a href="<?=$hotel['base']?>/client">client</a> | <a href="/">login</a>
     </form>
   </body>

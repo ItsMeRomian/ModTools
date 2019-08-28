@@ -9,17 +9,17 @@ $room = new room;
 	<?php if (isset($_GET["back"])) {
 			if ($_GET["back"] == "success") {?>
 				<div class="alert alert-success" role="alert">
-					Je hebt guild <?=$guild->get('name')?>'s data veranderd!
+					you've changed guild <?=$guild->get('name')?>'s data!
 				</div>
 	<?php 	} if ($_GET["back"] == "deleted") {?>
 				<div class="alert alert-success" role="alert">
-					Je hebt guild <?=$guild->get('id')?> verwijderd!
+					you've deleted guild <?=$guild->get('id')?>!
 				</div>
 	<?php }}  ?>
 		<table>
 			<tr>
 				<form action="guilds.php" method="GET">
-					<td><label for="id">Typ hier de <b>ID</b> van een guild die je wilt opzoeken:</label></td>
+					<td><label for="id">Type <b>ID</b> of guild:</label></td>
 					<td><input type="text" name="id" id="id"></td>
 					<td><button type="submit">gogogogo</button></td>
 				</form>
@@ -33,13 +33,13 @@ $room = new room;
 	<div class="col-2">
 		<h2>"<?=$guild->get('name')?>"</h2>
 		gemaakt door <a href="users.php?id=<?=$guild->get('owner_id');?>"><?=$user->getspecific('username', $guild->get('owner_id'));?></a><br>
-		<img style="width: 110px;" src="<?=$hotel['base']?>/swf/guildbadges/generated/<?=$guild->get('badge')?>.png">
+		<img style="width: 110px;" src="<?=$hotel['guildbadges'] . $guild->get('badge')?>.png">
 	</div>
 	<div class="col">
 		<h5>INFO</h5>
 		<table class="table table-sm">
 			<tr>
-				<td style="width: 15%;"><b>DESCCRIPTION: </b></td><td><?=$guild->get('desc')?></td>
+				<td style="width: 15%;"><b>DESCRIPTION: </b></td><td><?=$guild->get('desc')?></td>
 			</tr>
 			<tr>
 				<td><b>ROOM: </b></td><td><a href="rooms.php?id=<?=$guild->get('room_id')?>"><?=$room->getspecific('caption', $guild->get('room_id'))?></a></td>
@@ -53,22 +53,22 @@ $room = new room;
 		</table>
 	</div>
 	<div class="col">
-		<h5>VERWIJDER GUILD</h5>
+		<h5>DELETE GUILD</h5>
 		<form action="query.php" method="GET">
 			<input hidden value="deleteguild" name="what">
-			<button name="id"value="<?=$guild->get('id')?>"type="submit">VERWIJDER GUILD <?=$guild->get('id')?></button>
+			<button name="id"value="<?=$guild->get('id')?>"type="submit">DELETE GUILD <?=$guild->get('id')?></button>
 		</form>
 	</div>
 </div>
 <br>
 <div class="row">
 	<div class="col"> 
-		<h5>USERS IN DEZE GROEP</h5>
+		<h5>USERS IN GUILD</h5>
 			<table style="width: 100%;" class="table table-striped table-hover">
 			<tr>
 				<td><b>USER</b></td>
 				
-				<td style="width: 80%;"><b>GROEP RANK</b></td>
+				<td style="width: 80%;"><b>GUILD RANK</b></td>
 			</tr>
 			<?php 
 			$guildusersresult = runassoc("SELECT * FROM group_memberships WHERE group_id = '" . $_GET['id'] . "'");

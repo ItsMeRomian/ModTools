@@ -12,25 +12,25 @@ $user = new user;
 					$sollies = $sollies->num_rows;
 				} else { $sollies = 0; }
 				$server = runarray("SELECT * FROM server_status"); if ($server['users_online'] == 1) {?>
-				Momenteel is er <b>1 <?=$hotel['users']?> online</b>,
+				Currently <b>1 <?=$hotel['users']?> online</b>,
 				<?php } else { ?>
-				Momenteel zijn er <b><?=$server['users_online']?> <?=$hotel['users']?>'s</b> online,
+				Currently <b><?=$server['users_online']?> <?=$hotel['users']?>'s</b> online,
 				<?php } ?>
-				 zijn er <b><?=$server['loaded_rooms']?> kamers</b> geladen en <b><a href="sollies"><?=$sollies?> onbeantwoordde sollies</a></b>.
+				 <b><?=$server['loaded_rooms']?> rooms</b> loaded and <b><a href="sollies"><?=$sollies?> unanswered sollies</a></b>.
 			</div>
 			<div class="alert alert-info fade show" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h5>Welkom <?=$_SESSION['username']?> in ModTools. </h5>	<br>
+				<h5>Welcome <?=$_SESSION['username']?> to ModTools. </h5>	<br>
 				<?=$modtools["welcome"]?><br>
-				Je bent ingelogd met account, <b><?=$_SESSION['username']?></b>, ip <b><?=$_SERVER['HTTP_X_FORWARDED_FOR']?></b>, en je hebt rank <b><?=$_SESSION['rank']?></b> (dat is <b><?=$_SESSION['rankname']?></b>)
+				You're logged in with, <b><?=$_SESSION['username']?></b>, ip <b><?=$_SERVER['HTTP_X_FORWARDED_FOR']?></b>, And have rank <b><?=$_SESSION['rank']?></b> (that's <b><?=$_SESSION['rankname']?></b>)
             </div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-		  <h2>Laatste  gebruikers online:</h2>
+		  <h2>Last users online:</h2>
 		  <table style="width: 100%;" class="table table-bordered table-hover">
 			<tr>
 				<td><b>USER</b></td>
@@ -50,12 +50,12 @@ $user = new user;
 		  </table>
 		</div>
 		<div class="col">
-		  <h2>laatst gemaakte kamers:</h2>
+		  <h2>Last created rooms:</h2>
 		  <table style="width: 100%;" class="table table-bordered table-hover">
 			<tr>
-				<td><b>NAAM</b></td>
-				<td><b>DOOR</b></td>
-				<td><b>MOMENTEEL ONLINE</b></td>
+				<td><b>NAME</b></td>
+				<td><b>BY</b></td>
+				<td><b>CURRENTLY ONLINE</b></td>
 			</tr>
 			<?php foreach(runassoc("SELECT * FROM `rooms` ORDER BY `id` DESC LIMIT 5") as $row) {?>
 				<tr>
@@ -67,11 +67,11 @@ $user = new user;
 		  </table>
 		</div>
 		<div class="col">
-			<h2>Laatste groep aangemaakt:</h2>
+			<h2>Last created groups:</h2>
 			<table style="width: 100%;" class="table table-bordered table-hover">
 				<tr>
-					<td><b>NAAM</b></td>
-					<td><b>KAMER</b></td>
+					<td><b>NAME</b></td>
+					<td><b>ROOM</b></td>
 					<td><b>DESC</b></td>
 				</tr>
 				<?php 		
@@ -92,7 +92,7 @@ $user = new user;
 	<hr>
 	<div class="row">
 		<div class="col">
-		<h2>Laatste Chatlogs:</h2>
+		<h2>Last chats from all rooms:</h2>
 		<table style="width: 100%;" class="table table-striped table-hover">
 			<tr>
 				<td><b>ROOM</b></td>

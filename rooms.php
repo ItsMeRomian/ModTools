@@ -20,7 +20,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 		<table>
 			<tr>
 				<form action="rooms.php" method="GET">
-					<td><label for="id">Typ hier de <b>ID</b> van een kamer die je wilt opzoeken:</label></td>
+					<td><label for="id">Type <b>ID</b> of an room:</label></td>
 					<td><input type="text" name="id" id="id"></td>
 					<td><button type="submit">gogogogo</button></td>
 				</form>
@@ -28,7 +28,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 			<br>
 			<tr>
 				<form action="rooms.php" method="GET">
-					<td><label for="name">Typ hier de <b>NAAM</b> van een kamer die je wilt opzoeken:</label></td>
+					<td><label for="name">Typ <b>NAME</b> of an room:</label></td>
 					<td><input type="text" name="name" id="name"></td>
 					<td><button type="submit">gogogogo</button></td>
 				</form>
@@ -42,7 +42,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 		  <table style="width: 100%;" class="table table-bordered table-hover">
 			<thead class="thead-dark">
 				<tr>
-					<td><b>NAAM</b></td>
+					<td><b>NAME</b></td>
 					<td><b>USER</b></td>
 					<td><b>USERSONLINE</b></td>
 					<td style="width: 70%;"><b>DESCRIPTION</b></td>
@@ -66,7 +66,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
     <div class="col-2">
 		<h2>"<?=$room->get('caption')?>"</h2>
 		<hr>
-		Gemaakt door <a href="users.php?id=<?=$user->getspecific('username', $room->get('owner'))?>"><?=$user->getspecific('username', $room->get('owner'))?></a><br>
+		Made by<a href="users.php?id=<?=$user->getspecific('username', $room->get('owner'))?>"><?=$user->getspecific('username', $room->get('owner'))?></a><br>
 		<img style="width: 120px;" src="<?=$hotel["base"]?>/swf/c_images/newroom/<?=$room->get('model_name')?>.png">
 	</div>
 	<div class="col">
@@ -75,22 +75,22 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 			<tr><td><b>USERS ONLINE:</b></td><td><?=$room->get('users_now')?></td></tr>
 			<tr><td><b>MODEL:</b></td><td><?=$room->get('model_name')?></td></tr>
 			<tr><td><b>STATUS:</b></td><td><?=$room->get('state')?></td></tr>
-			<tr><td><b>GUILD:</b></td><td><a href="guilds.php?id=<?=$room->get('group_id')?>"><?=$room->get('group_id')?> (ga)</a></td></tr>
+			<tr><td><b>GUILD:</b></td><td><a href="guilds.php?id=<?=$room->get('group_id')?>"><?=$room->get('group_id')?> (go)</a></td></tr>
 		</table>
 	</div>
 	<div class="col">
-		<h5>VERWIJDER KAMER</h5>
+		<h5>DELETE ROOM</h5>
 		<form action="query.php" method="GET">
 			<input hidden value="deleteroom" name="what">
-			<button name="id"value="<?=$room->get('id')?>"type="submit">VERWIJDER KAMER '<?=$room->get('caption')?>' (<?=$room->get('id')?>)</button>
+			<button name="id"value="<?=$room->get('id')?>"type="submit">DELETE ROOM'<?=$room->get('caption')?>' (<?=$room->get('id')?>)</button>
 		</form>
 	</div>
 	<div class="col">
-		<h5>VERANDER KAMER NAAM</h5>
+		<h5>CHANGE ROOM NAME</h5>
 		<form action="roommodify.php" method="GET">
 			<input hidden name="id" value="<?=$room->get('id')?>">
 			<input name="name" value="ongeaccepteerde kamer"> <button type="submit">gaan</button><br>
-			<input type="checkbox" name="setprivate"> verander de kamer naar prive?<br>(kamer krijg een random gegenereed wachtwoord maar omdat jij een hogere rank hebt dan 7 kan je zonder wachtwoord naar binnen. dyna's in de kamer moeten wel gedisconnect worden om het te zien.)
+			<input type="checkbox" name="setprivate"> change room to private?<br>(users with rank 7 or higher will be able to enter. requires ingame room reload.)
 		</form>
 	</div>
 
@@ -98,7 +98,7 @@ if (isset($_GET['id']) OR isset($_GET['name'])) {
 </div>
 <div class="row">
 <div class="col">
-		<h4>Laatste Chatlogs in deze kamer:</h4>
+		<h4>Last chatlogs.</h4>
 		<table style="width: 100%;" class="table table-striped">
 			<tr>
 				<td><b>USER</b></td>

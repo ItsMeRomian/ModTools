@@ -76,14 +76,14 @@ function show(ye) {
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       <a class="nav-item nav-link " href="home.php">Home </a>
-      <a class="nav-item nav-link" href="users.php">Gebruikers</a>
-      <a class="nav-item nav-link" href="rooms.php">Kamers</a>
+      <a class="nav-item nav-link" href="users.php">Users</a>
+      <a class="nav-item nav-link" href="rooms.php">Rooms</a>
       <a class="nav-item nav-link " href="guilds.php">Guilds</a>
-	  <a class="nav-item nav-link " href="news.php">Niewsberichten</a>
+	  <a class="nav-item nav-link " href="news.php">News (beta)</a>
 	  <a class="nav-item nav-link " href="sollies.php">Sollies</a>
     </div>
 	<div class="navbar-nav ml-auto" style="color: white;">
-		<a class="nav-item nav-link btn btn-success" style="color: white; margin-right: 5px;"target="_BLANK"href="<?-$hotel['base']?>/client">CLIENT (new tab) »</a>
+		<a class="nav-item nav-link btn btn-success" style="color: white; margin-right: 5px;"target="_BLANK"href="<?=$hotel['base']?>/client">CLIENT (new tab) »</a>
 		<a class="nav-item nav-link btn btn-danger" style="color: white;"href="logout.php">Logout »</a>
 	</div>
   </div>

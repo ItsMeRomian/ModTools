@@ -12,11 +12,11 @@ $user->start();
         if (isset($_GET["back"])) {
 			if ($_GET["back"] == "success") {?>
 		<div class="alert alert-success" role="alert">
-		Je hebt <?=$user->get('username')?>'s data veranderd!
+		You've changed <?=$user->get('username')?>'s data!
 		</div>
 	<?php } if ($_GET["back"] == "unban") { ?>
 		<div class="alert alert-success" role="alert">
-		Je hebt <?=$user->get('username')?> geunbanned!
+		You've unbanned <?=$user->get('username')?>!
 		</div>
 	<?php }} ?>
 		<a href="users.php">unselect</a>
@@ -25,7 +25,7 @@ $user->start();
 		<table>
 			<tr>
 				<form action="users.php" method="GET">
-					<td><label for="id">Typ hier de <b>ID</b> van een user die je wilt opzoeken:</label></td>
+					<td><label for="id">Type <b>ID</b> of an user:</label></td>
 					<td><input type="text" name="id" id="id"></td>
 					<td><button type="submit">gogogogo</button></td>
 				</form>
@@ -33,7 +33,7 @@ $user->start();
 			<br>
 			<tr>
 				<form action="users.php" method="GET">
-					<td><label for="name">Typ hier de <b>NAAM</b> van een user die je wilt opzoeken:</label></td>
+					<td><label for="name">Type <b>NAME</b> of an user:</label></td>
 					<td><input type="text" name="name" id="name"></td>
 					<td><button type="submit">gogogogo</button></td>
 				</form>
@@ -46,7 +46,7 @@ $user->start();
 		<br>
 <!--5 highest id users viewed when no one is selected!-->
 		<?php if (!isset($_GET['id'])) { ?>
-		<p>Nieuwste users in Dyna</p>
+		<p>Newest users</p>
 		<table style="width: 100%;" class="table table-bordered table-hover">
 			<tr>
 				<td style="width: 3%;"><b>ID</b></td>
@@ -62,7 +62,7 @@ $user->start();
 				<td><?=$row["id"]?></td>
 				<td><a href="users.php?id=<?=$row["id"]?>"><?=$row["username"]?></a></td>
 				<td><?=$row["mail"]?></td>
-				<td><?=$row["rank"]?>, dat is "<b><?=$rank[0]["name"]?></b>"</td>
+				<td><?=$row["rank"]?>, thats "<b><?=$rank[0]["name"]?></b>"</td>
 			</tr>
 				<?php } ?>
 		</table>
@@ -113,7 +113,7 @@ $user->start();
 					<td><button style="display: none;" id="de2" type="submit">gogogogo</button></td>
 				</tr>
 				<tr>
-					<td><b>GEMAAKT OP: </b></td><td><?=date("d-m-Y H:i", $user->get('account_created'))?></td>
+					<td><b>MADE ON: </b></td><td><?=date("d-m-Y H:i", $user->get('account_created'))?></td>
 					
 				</tr>
 			</form>
@@ -125,15 +125,15 @@ $user->start();
 		if ($user->banned()) { ?>
 				<table>
 				<tr>
-					<td>Ja, Tot </td>
+					<td>Yes, till </td>
 					<td><?=date("d/m/Y H:i", $user->banned()['expire'])?></td>
 				</tr>
 				<tr>
-					<td>Gebant door: </td>
+					<td>Banned by: </td>
 					<td><?=$user->getspecific('username', $user->banned()['added_by'])?></td>
 				</tr>
 				<tr>
-					<td>Reden: </td>
+					<td>Given reason (if any): </td>
 					<td><?=$user->banned()['reason']?></td>
 				</tr>
 				</table>
@@ -141,32 +141,32 @@ $user->start();
 				<?php
 			
 		} else { ?>
-			Nee, <a onclick="show('bandiv')" href="#">nu bannen?</a>
+			No, <a onclick="show('bandiv')" href="#">Ban now?</a>
 			<div style="display: none;"id="bandiv">
-			<table>
-			<form method="GET" action="query.php">
-			<input hidden value="makeban" name="what">
-			<tr>
-				<td>USER:</td>
-				<input hidden name="id" value="<?=$user->get('id')?>">
-				<td><input disabled value="<?=$user->get('username');?>"></td>
-			</tr>
-			<tr>
-				<td>GEBANT DOOR:</td>
-				<input hidden value="<?=$_SESSION['id']?>" name="user_staff_id">
-				<td><input disabled value="<?=$_SESSION['username']?>" name="user_staff_id"></td>
-			</tr>
-			<tr>
-				<td>REDEN:</td>
-				<td><input placeholder="minimaal 2 abn zinnen"type="text" name="ban_reason"></td>
-			</tr>
-			<tr>
-				<td>EINDE BAN:<b></b></td>
-				<td><input placeholder="IN UNIX TIMESTAMP!"type="text" name="ban_expire"></td><td><a target="_BLANK"href="https://www.unixtimestamp.com/index.php">Wie tf is unix</a></td>
-			</tr>
-			<tr><td><button type="submit">slaan met die hamer</button></td><tr>
-			</form>
-			</table>
+				<table>
+					<form method="GET" action="query.php">
+						<input hidden value="makeban" name="what">
+						<tr>
+							<td>USER:</td>
+							<input hidden name="id" value="<?=$user->get('id')?>">
+							<td><input disabled value="<?=$user->get('username');?>"></td>
+						</tr>
+						<tr>
+							<td>BANNED BY:</td>
+							<input hidden value="<?=$_SESSION['id']?>" name="user_staff_id">
+							<td><input disabled value="<?=$_SESSION['username']?>" name="user_staff_id"></td>
+						</tr>
+						<tr>
+							<td>REASON:</td>
+							<td><input placeholder="minimaal 2 abn zinnen"type="text" name="ban_reason"></td>
+						</tr>
+						<tr>
+							<td>ENDS:<b></b></td>
+							<td><input placeholder="IN UNIX TIMESTAMP!"type="text" name="ban_expire"></td><td><a target="_BLANK"href="https://www.unixtimestamp.com/index.php">Wie tf is unix</a></td>
+						</tr>
+						<tr><td><button type="submit">slaan met die hamer</button></td><tr>
+					</form>
+				</table>
 			</div>
 			<?php } ?>
 	</div>
@@ -175,11 +175,11 @@ $user->start();
 		<?php
 		$uotwrow = runarray("SELECT * FROM uotw");
 		if ($uotwrow['userid'] == $user->get('id')) { ?>
-			<?=$user->get('username')?> is UOTW met de text: <br>
+			<?=$user->get('username')?> is UOTW with text: <br>
 			"<?=$uotwrow['text']?>" <br> 
 			<a href="query.php?what=deleteuotw&id=<?=$user->get('id')?>">nee stop</a>
 		<?php } else { ?>
-			<?=$user->get('username')?> is niet UOTW. <a href="#" onclick="show('uotw')">Nu maken?</a>
+			<?=$user->get('username')?> is not UOTW. <a href="#" onclick="show('uotw')">make now?</a>
 		<div style="display: none;"id="uotw">
 			<form method="GET" action="query.php">
 				<input hidden value="makeuotw" name="what">
@@ -197,7 +197,7 @@ $user->start();
 <hr>
 <div class="row">
 	<div class="col">
-		<h5>KAMERS VAN <?=strtoupper($user->get('username'))?></h5>
+		<h5>ROOMS OF <?=strtoupper($user->get('username'))?></h5>
 		<table  class="table table-striped ">
 		<tr><td><b>NAAM</b></td><td><b>ONLINE</b></td><td><b>GUILD</b></td><td><b>DESCRIPTION</b></td></tr>
 		<?php
@@ -215,6 +215,7 @@ $user->start();
 		</table>
 	</div>
 </div>
+&copy; DynaHotel 2018 Made with &hearts; by <a href="https://dynafools.com">ItsMeRomian</a>
 </div>
 
 <br><br>
