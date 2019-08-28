@@ -71,7 +71,8 @@ $room = new room;
 				<td style="width: 80%;"><b>GUILD RANK</b></td>
 			</tr>
 			<?php 
-			$guildusersresult = runassoc("SELECT * FROM group_memberships WHERE group_id = '" . $_GET['id'] . "'");
+			$guildusersresultid = $conn->real_escape_string($_GET['id']);
+			$guildusersresult = runassoc("SELECT * FROM group_memberships WHERE group_id = '" . $guildusersresultid . "'");
 			foreach($guildusersresult as $user) {
 				$id = $user['user_id'];
 				$sql = "SELECT username FROM users WHERE id = '$id'";

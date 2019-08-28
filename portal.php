@@ -1,8 +1,9 @@
 <?php
 include_once('modtoolsconfig.php');
 
-$ticket = $_GET['ticket'];
-$id = $_GET['user'];
+
+$ticket = $conn->real_escape_string($_GET['ticket']);
+$id = $conn->real_escape_string($_GET['user']);
 
 $result = $conn->query("SELECT username, rank, admticket, id FROM users WHERE id = '$id' AND admticket = '$ticket'");
 $row = $result->fetch_array();

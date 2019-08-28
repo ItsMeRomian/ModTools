@@ -1,8 +1,9 @@
 <?php
 include_once("modtoolsconfig.php");
-$id = $_GET['id'];
-$name = $_GET['name'];
-$setprivate = $_GET['setprivate'];
+$id = $conn->real_escape_string($_GET['id']);
+$name = $conn->real_escape_string($_GET['name']);
+$setprivate = $conn->real_escape_string($_GET['setprivate']);
+
 if ($setprivate == "on") {
 	$sql = "UPDATE `rooms` SET `caption`='$name',`state`='password',`password`='hahahahahahah' WHERE (`id`='$id') LIMIT 1";
 } else {

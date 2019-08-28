@@ -2,7 +2,9 @@
 
 //Updates sollie to current state.
 if (isset($_GET['id'])) {
-	if ($result = $conn->query("UPDATE staffapplication SET state='" . $_GET['state'] . "', answered_by='" . $_SESSION['username'] . "' WHERE id='" . $_GET['id'] . "'")) { ?>
+	$state = $conn->real_escape_string($_GET['state']);
+	$id = $conn->real_escape_string($_GET['id']);
+	if ($result = $conn->query("UPDATE staffapplication SET state='" . $state . "', answered_by='" . $_SESSION['username'] . "' WHERE id='" . $state . "'")) { ?>
 <div class="alert alert-success" role="alert">
 	Solicitatie Nr <?=$id?> is veranderd naar <b><?=$state?></b>
 </div>

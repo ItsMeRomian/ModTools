@@ -22,9 +22,12 @@ if ($_GET['pixels'] !== "") {
 	$key = "pixels";
 	$value = $_GET['pixels'];
 }
+
+$key = $conn->real_escape_string($key);
+$value = $conn->real_escape_string($value);
+
 $sql = "UPDATE `users` SET `$key`='$value' WHERE (`id`='$id')";
 $result = $conn->query($sql);
-echo $result;
 if ($result == "1") {
 	header("Location: users.php?id=$id&back=success");
 } else {

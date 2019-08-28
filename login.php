@@ -1,6 +1,7 @@
 <?php
 include_once('modtoolsconfig.php');
-$username = $_POST["username"];
+$username = $conn->real_escape_string($_POST['username']);
+
 $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
 $sql = "SELECT id, password, username, rank, auth_ticket FROM users WHERE username = '$username'";
