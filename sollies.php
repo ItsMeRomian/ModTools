@@ -2,26 +2,28 @@
 
 //Updates sollie to current state.
 if (isset($_GET['id'])) {
-	if ($result = $conn->query("UPDATE staffapplication SET state='" . $_GET['state'] . "', answered_by='" . $_SESSION['username'] . "' WHERE id='" . $_GET['id'] . "'")) { ?>
+	$state = $conn->real_escape_string($_GET['state']);
+	$id = $conn->real_escape_string($_GET['id']);
+	if ($result = $conn->query("UPDATE staffapplication SET state='" . $state . "', answered_by='" . $_SESSION['username'] . "' WHERE id='" . $state . "'")) { ?>
 <div class="alert alert-success" role="alert">
-	Solicitatie Nr <?=$_GET['id']?> is veranderd naar <b><?=$_GET['state']?></b>
+	Solicitatie Nr <?=$id?> is veranderd naar <b><?=$state?></b>
 </div>
-<?php } else {}} ?>
+<?php }} ?>
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<h2>Laatste  sollies</h2>
+			<h2>Last sollies</h2>
 			<table  class="table table-striped table-hover">
 				<tr>
 					<td><b>SollieNr</b></td>
-					<td><b>Status</b></td>
+					<td><b>State</b></td>
 					<td><b>Solicitant</b></td>
-					<td><b>Voor</b></td>
+					<td><b>For</b></td>
 					<td><b>Hours</b></td>
-					<td><b>Kent</b></td>
-					<td><b>Waarom</b></td>
-					<td><b>Gesolisiteerd op</b></td>
-					<td><b>Beantwoord</b></td>
+					<td><b>Knows</b></td>
+					<td><b>Why</b></td>
+					<td><b>Sollie'd on</b></td>
+					<td><b>Answerd</b></td>
 					<td><b></b></td>
 				</tr>
 			<?php
@@ -38,7 +40,7 @@ if (isset($_GET['id'])) {
 					<td><?php if ($row['state'] == "pending") { ?><a href='#' onclick="show('<?=$row['id']?>')">Answer now</a> <?php } else { echo "beantwoord door <a href=users.php?name=" . $row['answered_by'] . ">" . $row['answered_by'] . "</a>"; }?></td>
 					<div style="display: none;" class="col" id=<?=$row['id']?>>
 						<form action="sollies.php" method="GET">
-							<h3>Antwoord op <?=$row['username']?></h3>
+							<h5>Antwoord op <?=$row['username']?></h5>
 							<input hidden name="id" value="<?=$row['id']?>">
 							<select name='state'>
 								<option value='accepted'>accepted</option>
