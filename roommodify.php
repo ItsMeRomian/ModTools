@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("modtoolsconfig.php");
 $id = $conn->real_escape_string($_GET['id']);
 $name = $conn->real_escape_string($_GET['name']);
@@ -11,6 +12,7 @@ if ($setprivate == "on") {
 }
 $result = $conn->query($sql);
 if ($result == "1") {
+	createLog('roomMod', $_SESSION['id'], $id, "alter caption with value $name");
 	header("Location: rooms.php?id=" . $id . "&back=success");
 } else {
 	echo $conn->error;

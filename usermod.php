@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('modtoolsconfig.php');
 
 $id = $_GET['id'];
@@ -29,6 +30,7 @@ $value = $conn->real_escape_string($value);
 $sql = "UPDATE `users` SET `$key`='$value' WHERE (`id`='$id')";
 $result = $conn->query($sql);
 if ($result == "1") {
+	createLog('userMod', $_SESSION['id'], $id, "alter $key with value $value");
 	header("Location: users.php?id=$id&back=success");
 } else {
 	echo $conn->error;

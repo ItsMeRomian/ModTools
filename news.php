@@ -36,7 +36,11 @@
 	<div class="row">
 		<div class="col-8">
 			<h5>MAAK/EDIT EEN NIEUWSBERICHT</h5>
-			let niet op dat undefined index shit
+			<?php
+			if (empty($_GET['title'])) {
+				die("emptyyy");
+			}
+			?>
 			<form action="newsnew.php" method="GET">
 				<table>
 					<input hidden name="id" value="<?= $_GET['id'] ?>">

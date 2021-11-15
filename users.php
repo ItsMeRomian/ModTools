@@ -1,6 +1,7 @@
 <?php include_once("include.php");
 $user = new user;
 $user->start();
+createLog('lookAtUser', $_SESSION['id'], $user->get('id'));
 ?>
 <div class="container-fluid">
 	<div class="row">
@@ -57,14 +58,13 @@ $user->start();
 						<td style="width: 93%;"><b>RANK</b></td>
 					</tr>
 					<?php
-					foreach (runassoc("SELECT id, username, rank, mail FROM users ORDER BY `id` DESC LIMIT 5") as $row) {
-						$rank = runassoc("SELECT name FROM ranks WHERE id = '" . $row['rank'] . "'");
+					foreach (runassoc("SELECT * FROM users ORDER BY `id` DESC LIMIT 5") as $row) {
 					?>
 						<tr>
 							<td><?= $row["id"] ?></td>
 							<td><a href="users.php?id=<?= $row["id"] ?>"><?= $row["username"] ?></a></td>
 							<td><?= $row["mail"] ?></td>
-							<td><?= $row["rank"] ?>, thats "<b><?= $rank[0]["name"] ?></b>"</td>
+							<td><?= $row["rank"] ?></td>
 						</tr>
 					<?php } ?>
 				</table>

@@ -1,6 +1,8 @@
 <?php include_once("include.php");
 $room = new room;
 $user = new user;
+createLog('lookAtRoom', $_SESSION['id'], $room->get('id'));
+
 ?>
 <div class="container-fluid">
 	<div class="row">
