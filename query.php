@@ -3,7 +3,7 @@ if (!$_SESSION['logged']) {
 	header("Location: index.php");
 }
 
-$conn = new mysqli("localhost", "root", "mijnkreft", "modtools");
+$conn = new mysqli("localhost", "debian-sys-maint", "s1fKB8eU4k6tODH4", "modtools");
 
 
 $what = $conn->real_escape_string($_GET['what']);
@@ -30,10 +30,16 @@ switch ($what) {
 		$sql = "DELETE FROM `cms_news` WHERE (`id`='" . $id . "')";
 		$back = "news.php?back=deleted";
 		break;
-		// case "makenews":
-		// $sql = "INSERT INTO cms_news (title, image, shortstory, longstory, author, date) VALUES ('" . $_GET['title'] ."', '" . $_GET['image'] ."', '" . $_GET['author'] ."', '" . $_GET['date'] ."', '" . $_GET['short'] ."', '" . $_GET['long'] ."')";
-		// $back = "news.php?id=" . $id ."&back=success";
-		// break;
+	case "makenews":
+		$title = $conn->real_escape_string($_GET['title']);
+		$image = $conn->real_escape_string($_GET['image']);
+		$author = $conn->real_escape_string($_GET['author']);
+		$date = $conn->real_escape_string($_GET['date']);
+		$short = $conn->real_escape_string($_GET['short']);
+		$long = $conn->real_escape_string($_GET['long']);
+		$sql = "INSERT INTO cms_news (title, image, shortstory, longstory, author, date) VALUES ('$title', '$image', '$short', '$long', '$author', '$date')";
+		$back = "news.php?id=" . $id . "&back=success";
+		break;
 	case "makeuotw":
 		$conn->query("DELETE FROM uotw");
 		$text = $conn->real_escape_string($_GET['text']);
