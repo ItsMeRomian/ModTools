@@ -54,9 +54,9 @@ $room = new room;
 	</div>
 	<div class="col">
 		<h5>DELETE GUILD</h5>
-		<form action="query.php" method="GET">
+		<form action="query.php" method="POST">
 			<input hidden value="deleteguild" name="what">
-			<button name="id"value="<?=$guild->get('id')?>"type="submit">DELETE GUILD <?=$guild->get('id')?></button>
+			<button name="id" value="<?=$guild->get('id')?>" type="submit">DELETE GUILD <?=$guild->get('id')?></button>
 		</form>
 	</div>
 </div>

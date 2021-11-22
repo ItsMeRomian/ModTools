@@ -100,14 +100,14 @@ createLog('lookAtRoom', $_SESSION['id'], $room->get('id'));
 		</div>
 		<div class="col">
 			<h5>DELETE ROOM</h5>
-			<form action="query.php" method="GET">
+			<form action="query.php" method="POST">
 				<input hidden value="deleteroom" name="what">
 				<button name="id" value="<?= $room->get('id') ?>" type="submit">DELETE ROOM'<?= $room->get('caption') ?>' (<?= $room->get('id') ?>)</button>
 			</form>
 		</div>
 		<div class="col">
 			<h5>CHANGE ROOM NAME</h5>
-			<form action="roommodify.php" method="GET">
+			<form action="roommodify.php" method="POST">
 				<input hidden name="id" value="<?= $room->get('id') ?>">
 				<input name="name" value="ongeaccepteerde kamer"> <button type="submit">gaan</button><br>
 				<input type="checkbox" name="setprivate"> change room to private?<br>(users with rank 7 or higher will be able to enter. requires ingame room reload.)

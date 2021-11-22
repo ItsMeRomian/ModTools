@@ -86,7 +86,7 @@ createLog('lookAtUser', $_SESSION['id'], $user->get('id'));
 	<div class="col">
 		<h5>INFO</h5>
 		<table class="table table-sm">
-			<form method="GET" action="usermod.php">
+			<form method="POST" action="usermod.php">
 				<input name="id" value="<?= $user->get('id') ?>" hidden>
 				<tr>
 					<td><b>MOTTO: </b></td>
@@ -156,7 +156,7 @@ createLog('lookAtUser', $_SESSION['id'], $user->get('id'));
 			No, <a onclick="show('bandiv')" href="#">Ban now?</a>
 			<div style="display: none;" id="bandiv">
 				<table>
-					<form method="GET" action="query.php">
+					<form method="POST" action="query.php">
 						<input hidden value="makeban" name="what">
 						<tr>
 							<td>USER:</td>
@@ -189,14 +189,14 @@ createLog('lookAtUser', $_SESSION['id'], $user->get('id'));
 		<h5>UOTW</h5>
 		<?php
 		$uotwrow = runarray("SELECT * FROM uotw");
-		if ($uotwrow['userid'] == $user->get('id')) { ?>
+		if ($uotwrow && $uotwrow['userid'] == $user->get('id')) { ?>
 			<?= $user->get('username') ?> is UOTW with text: <br>
 			"<?= $uotwrow['text'] ?>" <br>
 			<a href="query.php?what=deleteuotw&id=<?= $user->get('id') ?>">nee stop</a>
 		<?php } else { ?>
 			<?= $user->get('username') ?> is not UOTW. <a href="#" onclick="show('uotw')">make now?</a>
 			<div style="display: none;" id="uotw">
-				<form method="GET" action="query.php">
+				<form method="POST" action="query.php">
 					<input hidden value="makeuotw" name="what">
 					<table>
 						<input hidden name="id" value="<?= $user->get('id') ?>">

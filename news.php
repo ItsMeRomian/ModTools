@@ -78,7 +78,7 @@
 		</div>
 		<div class="col">
 			<h5>VERWIJDER NIEuWS</h5>
-			<form action="query.php?what=deletenews" method="GET">
+			<form action="query.php?what=deletenews" method="POST">
 				<input name="id" type="number">
 				<button type="submit">verwijder :(</button>
 			</form>

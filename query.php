@@ -11,8 +11,11 @@ if (!$_SESSION['logged']) {
 $conn = new mysqli("localhost", "root", "mijnkreft", "modtools");
 
 
-$what = $conn->real_escape_string($_GET['what']);
-$id = $conn->real_escape_string($_GET['id']);
+$what = $conn->real_escape_string($_POST['what']);
+if (!$what) $what = $conn->real_escape_string($_GET['what']);
+
+$id = $conn->real_escape_string($_POST['id']);
+if (!$id) $id = $conn->real_escape_string($_GET['id']);
 
 switch ($what) {
 	case "deletegroup":
@@ -53,16 +56,16 @@ switch ($what) {
 		break;
 	case "makeuotw":
 		$conn->query("DELETE FROM uotw");
-		$text = $conn->real_escape_string($_GET['text']);
+		$text = $conn->real_escape_string($_POST['text']);
 		createLog('makeuotw', $_SESSION['id'], null, "With text: $text");
 		$sql = "INSERT INTO uotw (userid, text) VALUES ('" . $id . "', '" . $text . "')";
 		$back = "users.php?id=" . $id . "&back=success";
 		break;
 	case "makeban":
 		$timestamp = strtotime('now');
-		$ban_reason = $conn->real_escape_string($_GET['ban_reason']);
-		$ban_expire = $conn->real_escape_string($_GET['ban_expire']);
-		$user_staff_id = $conn->real_escape_string($_GET['user_staff_id']);
+		$ban_reason = $conn->real_escape_string($_POST['ban_reason']);
+		$ban_expire = $conn->real_escape_string($_POST['ban_expire']);
+		$user_staff_id = $conn->real_escape_string($_POST['user_staff_id']);
 		createLog('createBan', $user_staff_id, $id, "with reason: $ban_reason");
 		$sql = "INSERT INTO bans (bantype, value, reason, expire, added_by, added_date) VALUES ('user', '" . $id . "', '" . $ban_reason . "', '" . $ban_expire . "', '" . $user_staff_id . "', '$timestamp')";
 		$back = "users.php?id=" . $id . "&back=success";
